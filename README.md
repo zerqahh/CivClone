@@ -1,70 +1,17 @@
-# Getting Started with Create React App
+    Na początku pliku definiowane są tereny i dostępne prowincje. W funkcji generateProvincesWithTerrains losowane są 4 unikatowe prowincje z dostępnych prowincji oraz przypisywane są im unikatowe tereny.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+    Poniżej znajduje się funkcja getRemainingProvinces, która zwraca prowincje, które nie zostały jeszcze wybrane (nie mają przypisanego terenu).
 
-## Available Scripts
+    Następnie funkcja assignRandomTerrainIfNeeded przypisuje tereny do prowincji, które sąsiadują z już przypisanymi prowincjami. Jeśli istnieje przynajmniej jeden sąsiad z przypisanym terenem, losowany jest teren i przypisywany prowincji, jeśli przynajmniej jeden z sąsiadów ma ten sam teren.
 
-In the project directory, you can run:
+    Funkcja assignTerrainsToRemainingProvinces iteruje po pozostałych prowincjach i wywołuje funkcję assignRandomTerrainIfNeeded w celu przypisania terenu.
 
-### `npm start`
+    W dalszej części kodu znajdują się funkcje do sprawdzania, czy wszystkie prowincje mają przypisane tereny oraz opóźnionego wywołania funkcji za pomocą delayedExecution.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+    Pętla checkTerrainAssignment sprawdza co 5 sekund, czy wszystkie prowincje mają przypisane tereny. Jeśli niektóre prowincje wciąż nie mają terenów, funkcja ponownie przypisuje tereny do pozostałych prowincji.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+    Komponent Map renderuje interaktywną mapę. Komponent monitoruje zmiany w atrybucie province.terrain za pomocą efektu useEffect. Jeśli wszystkie prowincje mają przypisane tereny, efekt kończy działanie.
 
-### `npm test`
+    Funkcja calculateModifiers oblicza modyfikatory dla różnych typów terenów i przypisuje je do prowincji.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+    Przy najechaniu na prowincję, funkcja handleProvinceClick wyświetla informacje o terenie prowincji oraz jej sąsiadach. Jeśli sąsiad ma ten sam teren, to informacja o terenie jest wyświetlana.

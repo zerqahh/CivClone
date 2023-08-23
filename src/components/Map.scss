@@ -1,0 +1,90 @@
+// Map.scss
+
+.maparea {
+  display: flex;
+  width: 100vw;
+  height: 90vh;
+  background-color: rgb(5, 5, 5);
+  justify-content: center;
+  align-items: center;
+
+  .map-sectors {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    
+   
+
+    .sectors-container {
+      width: auto;
+      height: auto;
+      display: flex;
+
+      .provinces-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+       
+
+        .provinces {
+          display: flex;
+          width: 4vw;
+          justify-content: center;
+          align-items: center;
+          height: 7vh;
+          background-color: rgba(246, 255, 0, 0.445);
+          flex-direction: column;
+          font-size: 1.5vmin;
+
+          &.terrain-Water {
+            background-color: aquamarine; /* Przykładowy kolor dla terenu "water" */
+          }
+
+          &.terrain-Grassland {
+            background-color: lightgreen; /* Przykładowy kolor dla terenu "grass" */
+          }
+
+          &.terrain-Hills {
+            background-color: greenyellow; /* Przykładowy kolor dla terenu "grass" */
+          }
+
+          &.terrain-Mountains {
+            background-color: gray; /* Przykładowy kolor dla terenu "mountains" */
+          }
+
+     
+
+          &.terrain-Sand {
+            background-color: rgb(
+              244,
+              209,
+              96
+            ); /* Przykładowy kolor dla terenu "sand" */
+          }
+
+          &:hover {
+            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.747);
+            transition: 0.3s;
+          }
+        }
+      }
+    }
+  }
+}
+
+.info-visible {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.info-box {
+ text-align: center;
+}
+
+.province-transparent {
+  opacity: 0.5;
+}

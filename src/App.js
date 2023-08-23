@@ -1,24 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.scss";
+import Map from "../src/components/Map";
+import { StoreProvider } from 'easy-peasy';
+import mapStore from './components/Mapstore'; // Ścieżka do pliku Mapstore.js
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <StoreProvider store={mapStore}>
+      <div className="App">
+        <header className="Header"> </header>
+
+        <Map />
+
+        <footer className="Footer"></footer>
+      </div>{" "}
+    </StoreProvider>
   );
 }
 
